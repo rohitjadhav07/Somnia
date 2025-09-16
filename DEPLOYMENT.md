@@ -2,21 +2,25 @@
 
 ## Quick Deploy to Vercel
 
-### 1. One-Click Deploy
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-username/flash-liquidity-layer)
-
-### 2. Manual Deployment Steps
+### 1. Manual Deployment Steps
 
 #### Prerequisites
 - Vercel account
 - GitHub repository
-- WalletConnect Project ID
+- WalletConnect Project ID (optional for demo)
 
-#### Environment Variables (Required)
-Set these in your Vercel dashboard:
+#### Environment Variables (Set in Vercel Dashboard)
+**Required for full functionality:**
 
 ```env
 NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=your_wallet_connect_project_id
+NEXT_PUBLIC_SOMNIA_RPC_URL=https://dream-rpc.somnia.network
+NEXT_PUBLIC_CHAIN_ID=50312
+```
+
+**For demo/testing (use these values):**
+```env
+NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=demo-project-id
 NEXT_PUBLIC_SOMNIA_RPC_URL=https://dream-rpc.somnia.network
 NEXT_PUBLIC_CHAIN_ID=50312
 ```

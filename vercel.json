@@ -9,18 +9,6 @@
       "maxDuration": 30
     }
   },
-  "env": {
-    "NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID": "@wallet_connect_project_id",
-    "NEXT_PUBLIC_SOMNIA_RPC_URL": "@somnia_rpc_url",
-    "NEXT_PUBLIC_CHAIN_ID": "@chain_id"
-  },
-  "build": {
-    "env": {
-      "NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID": "@wallet_connect_project_id",
-      "NEXT_PUBLIC_SOMNIA_RPC_URL": "@somnia_rpc_url", 
-      "NEXT_PUBLIC_CHAIN_ID": "@chain_id"
-    }
-  },
   "headers": [
     {
       "source": "/(.*)",
@@ -36,8 +24,18 @@
         {
           "key": "Referrer-Policy",
           "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
         }
       ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
     }
   ]
 }
