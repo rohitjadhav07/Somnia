@@ -19,7 +19,7 @@ export function useTokenData(tokenAddresses: string[]) {
     contracts: tokenAddresses.flatMap((tokenAddress) => [
       {
         address: tokenAddress as `0x${string}`,
-        abi: ERC20ABI,
+        abi: ERC20ABI as any,
         functionName: 'name',
       },
       {

@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import CountUp from 'react-countup';
+import dynamic from 'next/dynamic';
+
+const CountUp = dynamic(() => import('react-countup'), { 
+  ssr: false,
+  loading: () => <span>0</span>
+});
 
 interface AnimatedCounterProps {
   value: number | string;

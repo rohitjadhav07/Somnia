@@ -12,29 +12,29 @@ export function useProtocolData() {
       // Registry data
       {
         address: contractsConfig.contracts.LiquidityPoolRegistry.address as `0x${string}`,
-        abi: LiquidityPoolRegistryABI,
+        abi: LiquidityPoolRegistryABI as any,
         functionName: 'getTotalPools',
       },
       {
         address: contractsConfig.contracts.LiquidityPoolRegistry.address as `0x${string}`,
-        abi: LiquidityPoolRegistryABI,
+        abi: LiquidityPoolRegistryABI as any,
         functionName: 'totalProtocolFees',
       },
       {
         address: contractsConfig.contracts.LiquidityPoolRegistry.address as `0x${string}`,
-        abi: LiquidityPoolRegistryABI,
+        abi: LiquidityPoolRegistryABI as any,
         functionName: 'getActivePools',
       },
       // Router data
       {
         address: contractsConfig.contracts.LiquidityRouter.address as `0x${string}`,
-        abi: LiquidityRouterABI,
+        abi: LiquidityRouterABI as any,
         functionName: 'getRouterStats',
       },
       // Flash loan data
       {
         address: contractsConfig.contracts.FlashBorrowModule.address as `0x${string}`,
-        abi: FlashBorrowModuleABI,
+        abi: FlashBorrowModuleABI as any,
         functionName: 'getFlashLoanStats',
       },
     ],
@@ -71,12 +71,12 @@ export function useProtocolData() {
 
     return {
       totalPools: Number(totalPoolsResult.result || 0),
-      totalProtocolFees: formatEther(totalProtocolFeesResult.result as bigint || BigInt(0)),
+      totalProtocolFees: formatEther((totalProtocolFeesResult.result as any) || BigInt(0)),
       activePools: (activePoolsResult.result as string[]) || [],
       totalSwaps: Number(routerStats?.[0] || 0),
-      totalVolume: formatEther(routerStats?.[1] || BigInt(0)),
+      totalVolume: formatEther((routerStats?.[1] as any) || BigInt(0)),
       totalFlashLoans: Number(flashLoanStats?.[0] || 0),
-      totalFlashLoanVolume: formatEther(flashLoanStats?.[1] || BigInt(0)),
+      totalFlashLoanVolume: formatEther((flashLoanStats?.[1] as any) || BigInt(0)),
       isLoading: false,
     };
   }, [data, isError, isLoading]);
@@ -96,7 +96,7 @@ export function usePoolsData() {
   const { data: poolsData, isLoading } = useContractReads({
     contracts: activePools.map((poolAddress) => ({
       address: contractsConfig.contracts.LiquidityPoolRegistry.address as `0x${string}`,
-      abi: LiquidityPoolRegistryABI,
+      abi: LiquidityPoolRegistryABI as any,
       functionName: 'getPoolInfo',
       args: [poolAddress],
     })),
@@ -143,8 +143,8 @@ export function usePoolsData() {
         token1Symbol,
         fee: Number(poolInfo.fee),
         isActive: poolInfo.isActive,
-        totalVolume: formatEther(poolInfo.totalVolume),
-        totalFees: formatEther(poolInfo.totalFees),
+        totalVolume: formatEther((poolInfo.totalVolume as any) || BigInt(0)),
+        totalFees: formatEther((poolInfo.totalFees as any) || BigInt(0)),
         registeredAt: Number(poolInfo.registeredAt),
         tvl: formatEther(poolInfo.totalVolume), // Approximate TVL
         apr: '0', // Calculate based on fees and TVL
@@ -164,7 +164,7 @@ export function useFlashLoanTokens() {
     contracts: [
       {
         address: contractsConfig.contracts.FlashBorrowModule.address as `0x${string}`,
-        abi: FlashBorrowModuleABI,
+        abi: FlashBorrowModuleABI as any,
         functionName: 'getSupportedTokens',
       },
     ],

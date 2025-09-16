@@ -50,3 +50,14 @@ temp/
 # Deployment artifacts
 deployments/
 !deployments/.gitkeep
+
+# Vercel
+.vercel
+
+# Testing
+.nyc_output
+coverage/
+
+# Misc
+*.tgz
+*.tar.gz
