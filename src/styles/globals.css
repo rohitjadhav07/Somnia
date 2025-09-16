@@ -1,0 +1,491 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-black text-white overflow-x-hidden;
+    background:
+      linear-gradient(135deg, rgba(0, 212, 255, 0.03) 0%, transparent 25%),
+      linear-gradient(225deg, rgba(179, 71, 217, 0.03) 0%, transparent 25%),
+      linear-gradient(45deg, rgba(0, 255, 136, 0.02) 0%, transparent 25%),
+      radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(179, 71, 217, 0.05) 0%, transparent 50%),
+      #000000;
+    background-attachment: fixed;
+  }
+
+  /* Subtle cyber grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+      linear-gradient(rgba(0, 212, 255, 0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 212, 255, 0.015) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.5;
+  }
+
+  /* Animated geometric shapes instead of circles */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+      linear-gradient(45deg, rgba(0, 212, 255, 0.04) 1px, transparent 1px) 50px 50px,
+      linear-gradient(-45deg, rgba(179, 71, 217, 0.03) 1px, transparent 1px) 50px 50px,
+      linear-gradient(90deg, rgba(0, 255, 136, 0.02) 1px, transparent 1px) 25px 25px;
+    background-size: 100px 100px, 100px 100px, 50px 50px;
+    animation: geometricFloat 60s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.3;
+  }
+}
+
+@layer components {
+
+  /* Cyber Buttons */
+  .btn {
+    @apply relative px-6 py-3 font-medium transition-all duration-300 focus:outline-none overflow-hidden;
+    font-family: 'Orbitron', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9) !important;
+  }
+
+  .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .btn:hover::before {
+    left: 100%;
+  }
+
+  .btn-cyber {
+    @apply btn bg-transparent border-2 relative;
+    border-color: #00d4ff;
+    color: #00d4ff !important;
+    background: rgba(0, 212, 255, 0.1);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3), inset 0 0 20px rgba(0, 212, 255, 0.1);
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+  }
+
+  .btn-cyber:hover {
+    color: #000000 !important;
+    background: rgba(0, 212, 255, 0.9);
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.6), inset 0 0 40px rgba(0, 212, 255, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .btn-neon {
+    @apply btn font-bold;
+    color: #000000 !important;
+    background: linear-gradient(to right, #00d4ff, #b347d9);
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+    border-radius: 0;
+    clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  }
+
+  .btn-neon:hover {
+    box-shadow: 0 0 50px rgba(0, 212, 255, 0.8), 0 0 80px rgba(179, 71, 217, 0.4);
+    transform: scale(1.05);
+  }
+
+  .btn-hologram {
+    @apply btn bg-transparent border;
+    border-color: #b347d9;
+    color: #b347d9 !important;
+    background: linear-gradient(45deg, rgba(179, 71, 217, 0.1), rgba(0, 212, 255, 0.1));
+    animation: hologram 4s ease-in-out infinite;
+  }
+
+  .btn-hologram:hover {
+    animation-play-state: paused;
+    box-shadow: 0 0 30px rgba(179, 71, 217, 0.6);
+  }
+
+  /* Cyber Cards */
+  .cyber-card {
+    @apply relative backdrop-blur-md border overflow-hidden;
+    background: rgba(0, 0, 0, 0.7) !important;
+    border-color: rgba(0, 212, 255, 0.3);
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+    box-shadow: 0 8px 32px rgba(0, 212, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .cyber-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.8), transparent);
+  }
+
+  .cyber-card:hover {
+    border-color: rgba(0, 212, 255, 0.6);
+    box-shadow: 0 8px 32px rgba(0, 212, 255, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+  }
+
+  /* Glass Cards */
+  .glass-card {
+    @apply backdrop-blur-xl border rounded-2xl;
+    background: rgba(0, 0, 0, 0.6) !important;
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  }
+
+  .glass-card:hover {
+    background: rgba(0, 0, 0, 0.7) !important;
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.5);
+  }
+
+  /* Neon Inputs */
+  .cyber-input {
+    @apply w-full px-4 py-3 border transition-all duration-300 focus:outline-none;
+    background: rgba(0, 0, 0, 0.7) !important;
+    border-color: rgba(0, 212, 255, 0.3);
+    color: #ffffff !important;
+    font-family: 'Orbitron', monospace;
+    clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+  }
+
+  .cyber-input::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+  }
+
+  .cyber-input:focus {
+    border-color: #00d4ff;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3), inset 0 0 20px rgba(0, 212, 255, 0.1);
+    background: rgba(0, 212, 255, 0.05) !important;
+  }
+
+  /* Stat Cards */
+  .stat-card {
+    @apply cyber-card p-6 transition-all duration-500;
+  }
+
+  .stat-value {
+    @apply text-3xl font-bold bg-clip-text text-transparent;
+    background: linear-gradient(to right, #00d4ff, #b347d9);
+    font-family: 'Orbitron', monospace;
+    animation: neon-pulse 3s ease-in-out infinite;
+  }
+
+  .stat-label {
+    @apply text-sm uppercase tracking-wider;
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-family: 'Orbitron', monospace;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+  }
+
+  /* Text Effects */
+  .text-cyber {
+    font-family: 'Orbitron', monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #00d4ff !important;
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 0 40px rgba(0, 212, 255, 0.6), 0 2px 4px rgba(0, 0, 0, 0.9) !important;
+    animation: neon-pulse 3s ease-in-out infinite alternate;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.8), 0 0 20px rgba(0, 212, 255, 0.6), 0 0 30px rgba(0, 212, 255, 0.4);
+  }
+
+  .text-neon {
+    color: #00d4ff !important;
+    text-shadow: 0 0 5px #00d4ff, 0 0 10px #00d4ff, 0 0 15px #00d4ff, 0 0 20px #00d4ff;
+    animation: neon-pulse 2s ease-in-out infinite alternate;
+  }
+
+  /* Matrix Rain Effect */
+  .matrix-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.03;
+  }
+
+  .matrix-char {
+    position: absolute;
+    color: #00d4ff;
+    font-family: 'Orbitron', monospace;
+    font-size: 14px;
+    animation: matrixRain 10s linear infinite;
+  }
+
+  /* App name styling */
+  .app-name-stable {
+    font-family: 'Orbitron', monospace !important;
+    color: #00d4ff !important;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5), 0 2px 4px rgba(0, 0, 0, 0.8) !important;
+    animation: none !important;
+  }
+
+  /* Hero title styling */
+  .hero-title {
+    font-family: 'Orbitron', monospace !important;
+    color: #00d4ff !important;
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.9), 0 0 60px rgba(0, 212, 255, 0.7), 0 4px 8px rgba(0, 0, 0, 0.9) !important;
+    animation: neon-pulse 4s ease-in-out infinite alternate !important;
+  }
+
+  /* Universal text visibility improvements */
+  * {
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  }
+
+  /* Specific overrides for better visibility */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9) !important;
+  }
+
+  p,
+  span,
+  div,
+  label {
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+  }
+
+  /* Input and form elements */
+  input,
+  select,
+  textarea,
+  button {
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+  }
+
+  /* Select dropdown styling */
+  select {
+    background: rgba(0, 0, 0, 0.8) !important;
+    border: 1px solid rgba(0, 212, 255, 0.3) !important;
+    color: #ffffff !important;
+  }
+
+  select option {
+    background: rgba(0, 0, 0, 0.95) !important;
+    color: #ffffff !important;
+    padding: 8px !important;
+  }
+
+  select option:hover,
+  select option:focus,
+  select option:checked {
+    background: rgba(0, 212, 255, 0.2) !important;
+    color: #ffffff !important;
+  }
+
+  /* Gray text variants */
+  .text-gray-400 {
+    color: rgba(255, 255, 255, 0.6) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+  }
+
+  .text-gray-500 {
+    color: rgba(255, 255, 255, 0.5) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+  }
+
+  .text-gray-600 {
+    color: rgba(255, 255, 255, 0.4) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+  }
+
+  /* Wallet button styling */
+  [data-rk] button {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.15) 0%, rgba(179, 71, 217, 0.15) 100%) !important;
+    border: 1px solid rgba(0, 212, 255, 0.4) !important;
+    color: #ffffff !important;
+    font-family: 'Orbitron', monospace !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    transition: all 0.3s ease !important;
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px)) !important;
+    backdrop-filter: blur(10px) !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+  }
+
+  [data-rk] button:hover {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.25) 0%, rgba(179, 71, 217, 0.25) 100%) !important;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.4) !important;
+    transform: translateY(-2px) !important;
+    border-color: rgba(0, 212, 255, 0.6) !important;
+  }
+
+  /* Fix wallet address visibility */
+  [data-rk] button div,
+  [data-rk] button span {
+    color: #ffffff !important;
+    background: transparent !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+  }
+
+  /* Wallet dropdown styling */
+  [data-rk] [role="dialog"] {
+    background: rgba(0, 0, 0, 0.95) !important;
+    border: 1px solid rgba(0, 212, 255, 0.3) !important;
+    backdrop-filter: blur(20px) !important;
+  }
+}
+
+/* Keyframes */
+@keyframes geometricFloat {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 0.5;
+  }
+}
+
+@keyframes gradient-xy {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes neon-pulse {
+  0% {
+    text-shadow: 0 0 5px #00d4ff, 0 0 10px #00d4ff, 0 0 15px #00d4ff, 0 0 20px #00d4ff;
+  }
+
+  100% {
+    text-shadow: 0 0 10px #b347d9, 0 0 20px #b347d9, 0 0 30px #b347d9, 0 0 40px #b347d9;
+  }
+}
+
+@keyframes hologram {
+
+  0%,
+  100% {
+    opacity: 0.8;
+    filter: hue-rotate(0deg) brightness(1);
+  }
+
+  50% {
+    opacity: 1;
+    filter: hue-rotate(180deg) brightness(1.2);
+  }
+}
+
+@keyframes matrixRain {
+  0% {
+    transform: translateY(-100vh);
+  }
+
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00d4ff, #b347d9);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #b347d9, #ff006e);
+}
+
+/* Selection */
+::selection {
+  background: rgba(0, 212, 255, 0.3);
+  color: white;
+}
+
+/* Focus styles */
+*:focus {
+  outline: 2px solid rgba(0, 212, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cyber-card {
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+
+  .btn-cyber {
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+
+  [data-rk] button {
+    clip-path: polygon(0 0, calc(100% - 5px) 0, 100% 5px, 100% 100%, 5px 100%, 0 calc(100% - 5px)) !important;
+  }
+}

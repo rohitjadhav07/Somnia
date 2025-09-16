@@ -1,0 +1,58 @@
+{
+  "contracts": {
+    "LiquidityPoolRegistry": {
+      "address": "0x179B4c17ede43dBA3C740Ab3e8d9794857A34a57",
+      "abi": "LiquidityPoolRegistry"
+    },
+    "FlashBorrowModule": {
+      "address": "0xD9bf7801760d9ba33C901D940b4AdAa743E3df75",
+      "abi": "FlashBorrowModule"
+    },
+    "LiquidityRouter": {
+      "address": "0x55E3C54f645b8e68B299E9054828808FFcD5784F",
+      "abi": "LiquidityRouter"
+    }
+  },
+  "network": {
+    "name": "Somnia Testnet",
+    "chainId": 50312,
+    "rpcUrl": "https://dream-rpc.somnia.network",
+    "blockExplorer": "https://somnia-testnet.blockscout.com"
+  },
+  "tokens": {
+    "USDC": {
+      "address": "0xA9e8a129B045437BB914c3eEdb9C9f8A7f96903B",
+      "symbol": "mUSDC",
+      "name": "Mock USD Coin",
+      "decimals": 6,
+      "icon": "💵"
+    },
+    "USDT": {
+      "address": "0x0bc9CD08Bc8Ec47037Ab8d7481aE40fa7b700cFA",
+      "symbol": "mUSDT", 
+      "name": "Mock Tether USD",
+      "decimals": 6,
+      "icon": "💰"
+    },
+    "WETH": {
+      "address": "0x5Bf9f829587d9A69898b874B2C40B739980FBb96",
+      "symbol": "mWETH",
+      "name": "Mock Wrapped Ether",
+      "decimals": 18,
+      "icon": "⚡"
+    },
+    "WBTC": {
+      "address": "0x63e5144e391DC312FF7279f566582742410c5622",
+      "symbol": "mWBTC",
+      "name": "Mock Wrapped Bitcoin", 
+      "decimals": 8,
+      "icon": "₿"
+    }
+  },
+  "pools": {
+    "mUSDC-mUSDT": "0xA0F249fe769B8E23E7d97272DAa98AE5b0982AB1",
+    "mUSDC-mWETH": "0x6809D8A750dCEB686FEa87AB529CfbED81a014Fc",
+    "mWETH-mWBTC": "0xea274f9208Ddca9DAcDF79711a735Fe45dDCa7C6",
+    "mUSDT-mWETH": "0x0Bad5bF47f549B4Ce8F1e9D4664aCd2AafA0bCC3"
+  }
+}

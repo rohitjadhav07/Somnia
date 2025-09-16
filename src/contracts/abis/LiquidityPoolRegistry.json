@@ -1,0 +1,87 @@
+[
+  {
+    "inputs": [
+      {"internalType": "address", "name": "_feeRecipient", "type": "address"},
+      {"internalType": "uint256", "name": "_protocolFee", "type": "uint256"}
+    ],
+    "name": "initialize",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "_pool", "type": "address"},
+      {"internalType": "uint256", "name": "_fee", "type": "uint256"}
+    ],
+    "name": "registerPool",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getActivePools",
+    "outputs": [{"internalType": "address[]", "name": "", "type": "address[]"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{"internalType": "address", "name": "_pool", "type": "address"}],
+    "name": "getPoolInfo",
+    "outputs": [
+      {
+        "components": [
+          {"internalType": "address", "name": "poolAddress", "type": "address"},
+          {"internalType": "address", "name": "token0", "type": "address"},
+          {"internalType": "address", "name": "token1", "type": "address"},
+          {"internalType": "uint256", "name": "fee", "type": "uint256"},
+          {"internalType": "bool", "name": "isActive", "type": "bool"},
+          {"internalType": "uint256", "name": "totalVolume", "type": "uint256"},
+          {"internalType": "uint256", "name": "totalFees", "type": "uint256"},
+          {"internalType": "uint256", "name": "registeredAt", "type": "uint256"}
+        ],
+        "internalType": "struct LiquidityPoolRegistry.PoolInfo",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "address", "name": "_token0", "type": "address"},
+      {"internalType": "address", "name": "_token1", "type": "address"}
+    ],
+    "name": "getPoolByTokens",
+    "outputs": [{"internalType": "address", "name": "", "type": "address"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getTotalPools",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "totalProtocolFees",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {"indexed": true, "internalType": "address", "name": "pool", "type": "address"},
+      {"indexed": true, "internalType": "address", "name": "token0", "type": "address"},
+      {"indexed": true, "internalType": "address", "name": "token1", "type": "address"},
+      {"indexed": false, "internalType": "uint256", "name": "fee", "type": "uint256"}
+    ],
+    "name": "PoolRegistered",
+    "type": "event"
+  }
+]
